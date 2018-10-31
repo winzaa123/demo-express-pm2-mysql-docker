@@ -1,0 +1,38 @@
+version: '3.5'
+
+networks:
+  proxynet: 
+    name: proxy_maria_db
+
+services:
+  app-node-website-ex:
+    container_name: node_app_test
+    image: app-node-website-ex
+    restart: always
+    build:
+      context: ./ 
+      dockerfile: dev.Dockerfile # except copy file
+    environment:
+      - NODE_ENV= production
+      - DB_PASSWORD=test
+      - DB_USER=root
+      - DB_DATABASE=test_db
+      - DB_HOST=mariadb
+    volumes:
+     - ./express-example:/mnt/app/express-example
+    ports:
+      - 8080:3000
+    networks:
+      - proxynet
+  nginx:
+    image: nginx:alpine
+    container_name: nginx_express_phpmyadmin
+    restart: always
+    ports:
+      - "8000:80"  # Port test node  express example
+      - "8081:8081" # phpmyadmin
+      # - "443:443"
+    volumes:
+      - ./nginx/:/etc/nginx/
+    networks:
+      - proxynet

@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "express": "^4.16.4",
+    "knex": "^0.15.2",
+    "mysql2": "^1.6.1"
+  },
+  "name": "express-example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

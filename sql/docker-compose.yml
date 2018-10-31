@@ -1,0 +1,41 @@
+version: '2.1'
+networks:
+  network_bridge: 
+    external: 
+      name: proxy_maria_db
+services:
+  mariadb:
+    container_name: node_mariadb_test
+    image: 'bitnami/mariadb:latest'
+    restart: always
+    environment:
+      - MYSQL_USER=pnet
+      - MARIADB_ROOT_PASSWORD=test
+      - MARIADB_DATABASE=test_db
+    volumes:
+      - mariadb_data:/bitnami
+    networks:
+      - network_bridge
+  phpmyadmin:
+    container_name: node_phpmyadmin_test
+    image: bitnami/phpmyadmin:latest
+    restart: always
+    depends_on:
+      - mariadb
+    environment:
+      - MYSQL_USERNAME=root
+      - MYSQL_ROOT_PASSWORD=pnet  
+    # ports: # not used Nginx
+    #   - '8000:80'
+    expose: # if used Nginx
+      - 8081 
+    volumes:
+      - phpmyadmin_data:/bitnami
+    networks:
+      - network_bridge
+
+volumes:
+  mariadb_data:
+    driver: local
+  phpmyadmin_data:
+    driver: local

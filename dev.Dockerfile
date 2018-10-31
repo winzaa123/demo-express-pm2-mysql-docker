@@ -1,8 +1,6 @@
 FROM keymetrics/pm2:8-alpine
 
 # Bundle APP files
-# WORKDIR /mnt/app/nuxtApp
-# COPY ./nuxt-project /mnt/app/nuxtApp
 
 WORKDIR /mnt/app/express-example
 # COPY ./express-example /mnt/app/express-example

@@ -8,3 +8,8 @@
 - Nginx
 - Mariadb
 - docker-compose
+- Image
+  - keymetrics/pm2:8-alpine
+  - bitnami/mariadb:latest
+  - bitnami/phpmyadmin:latest
+  - nginx:alpine 

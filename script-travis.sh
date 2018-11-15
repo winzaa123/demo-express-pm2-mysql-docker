@@ -10,5 +10,4 @@ docker exec -it node_app_test sh -c "ping  -c 4 nginx_express_phpmyadmin"
 docker exec -it node_app_test sh -c "ping  -c 4 node_mariadb_test"
 docker exec -it node_app_test sh -c "nc -z -v node_mariadb_test 3306"
 docker logs node_app_test
-travis_wait 30 sleep 1800 &
 curl -s http://localhost:8000/test --connect-timeout 20  --progress-bar | bash # output json write data in mysql

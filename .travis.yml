@@ -27,10 +27,12 @@ addons:
 before_script:
   - docker -v
   - docker-compose --version
-  - docker-compose  up -d --build
+  - docker-compose -f "docker-compose.yml" up -d --build
+  - docker ps -a
+  - sleep 30  # wait for create network and express to start
   - docker-compose -f "sql/docker-compose.yml" up -d --build
   - docker ps -a
-  - sleep 15  # wait for MariaDB to start
+  - sleep 30  # wait for MariaDB to start
 
 script:
   - docker exec -it nginx_express_phpmyadmin sh -c "nc -z -v node_app_test:3000"

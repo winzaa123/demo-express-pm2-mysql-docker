@@ -36,10 +36,10 @@ before_install:
 before_script:
   - docker -v
   - docker-compose --version
-  - docker-compose up -d  
+  - docker-compose up -d  --build
   - docker ps -a
   - sleep 30  # wait for create network and express to start
-  - docker-compose -f sql/docker-compose.yml up -d  
+  - docker-compose -f ./sql/docker-compose.yml up -d  --build
   - docker ps -a
   - sleep 30  # wait for MariaDB to start
 
@@ -52,5 +52,5 @@ script:
   - docker logs node_app_test
 
 after_script:
-  - docker-compose -f docker-compose.yml down
-  - docker-compose -f sql/docker-compose.yml down
+  - docker-compose   down
+  - docker-compose -f ./sql/docker-compose.yml down

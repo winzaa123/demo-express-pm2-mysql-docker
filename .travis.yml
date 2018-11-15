@@ -39,7 +39,7 @@ before_script:
   - docker-compose up -d  
   - docker ps -a
   - sleep 30  # wait for create network and express to start
-  - docker-compose -f "sql/docker-compose.yml" up -d  
+  - docker-compose -f sql/docker-compose.yml up -d  
   - docker ps -a
   - sleep 30  # wait for MariaDB to start
 

@@ -39,7 +39,7 @@ before_script:
   - docker-compose up -d  --build
   - docker ps -a
   - sleep 10  # wait for create network and express to start
-  - pwd
+#   - pwd
   - docker-compose -f sql/docker-compose.yml up -d  --build
   - docker ps -a
   - sleep 30  # wait for MariaDB to start
@@ -51,6 +51,8 @@ script:
   - docker exec -it node_app_test sh -c "ping  -c 4 node_mariadb_test"
   - docker exec -it node_app_test sh -c "nc -z -v node_mariadb_test 3306"
   - docker logs node_app_test
+  - curl http://localhost:8000 
+  - curl http://localhost:8081 
 
 after_script:
   - docker-compose   down

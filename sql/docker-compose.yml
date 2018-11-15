@@ -9,7 +9,7 @@ services:
     image: 'bitnami/mariadb:latest'
     restart: always
     environment:
-      - MYSQL_USER=pnet
+      - MYSQL_USER=admin
       - MARIADB_ROOT_PASSWORD=test
       - MARIADB_DATABASE=test_db
     volumes:
@@ -24,7 +24,7 @@ services:
       - mariadb
     environment:
       - MYSQL_USERNAME=root
-      - MYSQL_ROOT_PASSWORD=pnet  
+      - MYSQL_ROOT_PASSWORD=test  
     # ports: # not used Nginx
     #   - '8000:80'
     expose: # if used Nginx

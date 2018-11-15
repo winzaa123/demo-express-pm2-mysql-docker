@@ -44,7 +44,8 @@ before_script:
   - docker ps -a
   - sleep 30  # wait for MariaDB to start
 
-script: ./script-travis.sh
+script: 
+  - ./script-travis.sh
 
 after_script:
   - docker-compose   down

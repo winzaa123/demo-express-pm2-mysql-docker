@@ -6,13 +6,17 @@ services:
 # addons:
 #   sauce_connect: true
 
-before_script:
+# before_script:
+#   - docker-compose -f "docker-compose.yml" up --build -d
+#   - docker-compose -f "sql/docker-compose.yml" up --build -d
+#   - docker ps -a
+#   - sleep 15  # wait for MariaDB to start
+
+script:
   - docker-compose -f "docker-compose.yml" up --build -d
   - docker-compose -f "sql/docker-compose.yml" up --build -d
   - docker ps -a
   - sleep 15  # wait for MariaDB to start
-
-script:
   - docker exec -it nginx_express_phpmyadmin sh -c "nc -z -v node_app_test:3000"
   - docker exec -it nginx_express_phpmyadmin sh -c "ping  -c 4 node_phpmyadmin_test"
   - docker exec -it node_app_test sh -c "ping  -c 4 nginx_express_phpmyadmin"

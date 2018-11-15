@@ -5,7 +5,12 @@ services:
 env:
   - DOCKER_COMPOSE_VERSION=1.23.1
   
-language: ruby
+language: node_js
+
+node_js:
+  - "8"
+
+cache: npm
 
 # addons:
 #   sauce_connect: true
@@ -20,6 +25,8 @@ before_install:
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
+  # install express
+  - cd express-example && npm i --production
   
 # addons:
 #   apt:

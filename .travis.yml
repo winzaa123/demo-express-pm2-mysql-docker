@@ -52,6 +52,7 @@ script:
   - docker exec -it node_app_test sh -c "nc -z -v node_mariadb_test 3306"
   - docker logs node_app_test
   - curl http://localhost:8000/test # output json write data in mysql
+  - sleep 5
 
 after_script:
   - docker-compose   down

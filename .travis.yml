@@ -7,8 +7,8 @@ services:
 #   sauce_connect: true
 
 before_script:
-  - docker-compose -f ./docker-compose.yml up --build -d
-  - docker-compose -f ./sql/docker-compose.yml up --build -d
+  - docker-compose -f "docker-compose.yml" up --build -d
+  - docker-compose -f "sql/docker-compose.yml" up --build -d
   - docker ps -a
   - sleep 15  # wait for MariaDB to start
 

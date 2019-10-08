@@ -1,8 +1,8 @@
 {
   "dependencies": {
-    "express": "^4.16.4",
-    "knex": "^0.15.2",
-    "mysql2": "^1.6.1"
+    "express": "^4.17.1",
+    "knex": "^0.19.5",
+    "mysql2": "^1.7.0"
   },
   "name": "express-example",
   "version": "1.0.0",
